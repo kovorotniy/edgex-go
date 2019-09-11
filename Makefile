@@ -130,8 +130,7 @@ docker_export_distro:
 	docker build \
 		-f cmd/export-distro/Dockerfile \
 		--label "git_sha=$(GIT_SHA)" \
-		-t edgexfoundry/docker-export-distro-go:$(GIT_SHA) \
-		-t edgexfoundry/docker-export-distro-go:$(DOCKER_TAG) \
+		-t export-distro-ric \
 		.
 
 docker_support_logging:
