@@ -120,7 +120,8 @@ func (reg *registrationInfo) update(newReg contract.Registration) bool {
 	case contract.DestZMQ:
 		reg.sender = newZeroMQEventPublisher()
 	case contract.DestIotCoreMQTT:
-		reg.sender = newIoTCoreSender(newReg.Addressable)
+		c := Configuration.Certificates["MQTTS"]
+		reg.sender = NewRicSender(newReg, c.Cert, c.Key)
 	case contract.DestRest:
 		reg.sender = newHTTPSender(newReg.Addressable)
 	case contract.DestXMPP:
